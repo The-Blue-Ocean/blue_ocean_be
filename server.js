@@ -17,7 +17,8 @@ app.use(express.json());
 app.use(cors());
 
 // Import routes
-
+const routes = require('./routes/studentRoutes');
+routes(app);
 
 // Listen to the server
 app.listen(port, () => {
