@@ -18,8 +18,6 @@ const StudentSchema = new Schema({
 
     hash: {
         type: String,
-        required: false
+        required: true
     },
 });
-
-module.exports = mongoose.model("student", StudentSchema);
