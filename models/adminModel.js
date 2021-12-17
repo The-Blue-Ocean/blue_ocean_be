@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Create Scheme instance and add Schema properties
-const StudentSchema = new Schema({
+const AdminSchema = new Schema({
     username: {
         type: String,
         required: true
@@ -26,3 +26,5 @@ const StudentSchema = new Schema({
         required: true
     }
 });
+
+module.exports = mongoose.model("admin", AdminSchema);
