@@ -16,9 +16,13 @@ const port = process.env.PORT || 4000;
 app.use(express.json());
 app.use(cors());
 
-// Import routes
+// Import student routes
 const routes = require('./routes/studentRoutes');
 routes(app);
+
+// // Import admin routes
+// const adminRoutes = require('./routes/adminRoutes');
+// adminRoutes(app);
 
 // Listen to the server
 app.listen(port, () => {
