@@ -6,11 +6,11 @@ const allRoutes = (app) => {
     // Student routes
 
     // GET request for /students endpoint for all students
-    app.route('/students').get(studentList.listAllStudents);
+    app.route('/api/students').get(studentList.listAllStudents);
 
     // Admin routes
     // GET request for /admins endpoint for all students
-    app.route('/admins').get(adminList.listAllAdmins);
+    app.route('/api/admins').get(adminList.listAllAdmins);
 }
 
 
