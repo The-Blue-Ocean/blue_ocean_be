@@ -4,7 +4,6 @@ const allRoutes = (app) => {
     const adminList = require('../controllers/adminControllers');
 
     // Student routes
-
     // GET request for /students endpoint for all students
     app.route('/api/students').get(studentList.listAllStudents);
 
