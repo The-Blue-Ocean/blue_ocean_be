@@ -13,6 +13,7 @@ exports.listAllAdmins = (req,res) => {
     });
 };
 
+// Query for adding a new entry into the admins collection
 exports.createNewAdmin = (req,res) => {
     let newAdmin = new Admin (req,res);
     newAdmin.save((err,admin) => {
@@ -23,6 +24,7 @@ exports.createNewAdmin = (req,res) => {
     });
 };
 
+// Query for deleting an entry from the admins colleciton
 exports.deleteAdmin = async (req,res) => {
     await Admin.deleteOne({ _id:req.params.id }, (err) => {
         if (err) {

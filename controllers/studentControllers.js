@@ -13,6 +13,7 @@ exports.listAllStudents = (req,res) => {
     });
 };
 
+// Query for adding a new entry into the students collection
 exports.createNewStudent = (req,res) => {
     let newStudent = new Student (req,res);
     newStudent.save((err,student) => {
@@ -23,6 +24,7 @@ exports.createNewStudent = (req,res) => {
     });
 };
 
+// Query for deleting an entry from the students colleciton
 exports.deleteStudent = async (req,res) => {
     await Student.deleteOne({ _id:req.params.id }, (err) => {
         if (err) {
