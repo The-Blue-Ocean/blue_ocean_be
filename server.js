@@ -2,7 +2,7 @@
 const express = require('express');
 
 // Import DB connection
-require('dotenv/config');
+require('dotenv').config()
 require('./db_config/db');
 
 // Create express app
