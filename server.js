@@ -8,9 +8,6 @@ require('./db_config/db');
 // Create express app
 const app = express();
 
-// Define port to run express app
-const port = process.env.PORT || 4000;
-
 // Use middleware for json
 app.use(express.json());
 
@@ -21,10 +18,5 @@ routes(app);
 // // Import admin routes
 // const adminRoutes = require('./routes/adminRoutes');
 // adminRoutes(app);
-
-// Listen to the server
-app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
-});
 
 module.exports = app

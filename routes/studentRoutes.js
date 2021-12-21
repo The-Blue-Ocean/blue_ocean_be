@@ -4,6 +4,7 @@ const allRoutes = (app) => {
     const adminList = require('../controllers/adminControllers');
     const addStudent = require('../controllers/studentControllers');
     const deleteStudent = require('../controllers/studentControllers');
+    const addAdmin = require('../controllers/adminControllers');
 
     // ### Student routes ###
     // GET request for /students endpoint for all students
@@ -23,8 +24,11 @@ const allRoutes = (app) => {
     // GET request for /api/admins endpoint for all students
     app.route('/api/admins').get(adminList.listAllAdmins);
 
+    // Post request to add admin
+    app.route('/api/add-admin').post(addAdmin.createNewAdmin)
+
     // GET request for /api/admins/:id endpoint for an admin by their id
-    // app.route('/api/admins/:id').get(adminList.listOneAdmin);
+    app.route('/api/admins/:id').get(adminList.listOneAdmin);
 }
 
 
