@@ -11,7 +11,7 @@ const app = express();
 // Define port to run express app
 const port = process.env.PORT || 4000;
 
-// Use middleware for json and cors
+// Use middleware for json
 app.use(express.json());
 
 // Import student routes
