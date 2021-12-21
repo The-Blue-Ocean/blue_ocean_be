@@ -14,8 +14,8 @@ exports.listAllStudents = (req, res) => {
 };
 
 // Query for getting information for a particular student
-exports.listOneStudent = (req,res) => {
-    Student.find({ _id:req.params.id }, (err, student) => {
+exports.listOneStudent = (req, res) => {
+    Student.find({ _id: req.params.id }, (err, student) => {
         if (err) {
             res.status(500).send(err);
         };
@@ -35,13 +35,8 @@ exports.createNewStudent = (req, res) => {
 };
 
 // Query for deleting an entry from the students colleciton
-<<<<<<< HEAD
 exports.deleteStudent = async (req, res) => {
-    await Student.deleteOne({ _id: req.params.id }, (err) => {
-=======
-exports.deleteStudent = async (req,res) => {
-    await Student.deleteOne({ "_id" : ObjectId(`req.params.id`) }, (err) => {
->>>>>>> 1bc92a05d9d4bbb8a12f4697e65a1ed05106cefb
+    await Student.deleteOne({ "_id": ObjectId(`req.params.id`) }, (err) => {
         if (err) {
             res.status(500).send(err);
         };
