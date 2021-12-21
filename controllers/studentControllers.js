@@ -15,7 +15,7 @@ exports.listAllStudents = (req,res) => {
 
 // Query for getting information for a particular student
 exports.listOneStudent = (req,res) => {
-    Student.find({ _id : req.params.id }, (err, student) => {
+    Student.find({ _id:req.params.id }, (err, student) => {
         if (err) {
             res.status(500).send(err);
         };
