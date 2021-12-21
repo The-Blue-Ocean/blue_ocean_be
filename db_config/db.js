@@ -1,7 +1,7 @@
 // Export mongoose
 const mongoose = require('mongoose');
 
-//import dotenv to mask connection string
+// Import dotenv to mask connection string
 require('dotenv/config');
 
 //assign the MongoDB connection string to a constant
@@ -17,8 +17,8 @@ const options = {
 mongoose.connect(uri, options).then(() => {
     console.log("Database connection established");
 },
-err => {
-    {
-        console.log("Error connecting Database instance due to:", err);
-    }
-});
+    err => {
+        {
+            console.log("Error connecting Database instance due to:", err);
+        }
+    });
