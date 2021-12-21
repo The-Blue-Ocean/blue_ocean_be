@@ -3,12 +3,22 @@ const Admin = require('../models/adminModel');
 
 // DEFINE CONTROLLER FUNCTIONS
 
-// Query for getting all student information
+// Query for getting all admin information
 exports.listAllAdmins = (req,res) => {
     Admin.find({}, (err, admin) => {
         if (err) {
             res.status(500).send(err);
         }
+        res.set('content-type', 'application/json').status(200).json(admin);
+    });
+};
+
+// Query for getting information for a particular admin
+exports.listOneAdmin = (req,res) => {
+    Admin.find({ _id:req.params.id }, (err, admin) => {
+        if (err) {
+            res.status(500).send(err);
+        };
         res.set('content-type', 'application/json').status(200).json(admin);
     });
 };
