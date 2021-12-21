@@ -13,6 +13,16 @@ exports.listAllStudents = (req,res) => {
     });
 };
 
+// Query for getting information for a particular student
+exports.listOneStudent = (req,res) => {
+    Student.find({ _id : req.params.id }, (err, student) => {
+        if (err) {
+            res.status(500).send(err);
+        };
+        res.set('content-type', 'application/json').status(200).json(student);
+    });
+};
+
 // Query for adding a new entry into the students collection
 exports.createNewStudent = (req,res) => {
     let newStudent = new Student (req,res);
@@ -26,7 +36,7 @@ exports.createNewStudent = (req,res) => {
 
 // Query for deleting an entry from the students colleciton
 exports.deleteStudent = async (req,res) => {
-    await Student.deleteOne({ _id:req.params.id }, (err) => {
+    await Student.deleteOne({ "_id" : ObjectId(`req.params.id`) }, (err) => {
         if (err) {
             res.status(500).send(err);
         };
