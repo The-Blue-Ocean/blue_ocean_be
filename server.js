@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 
 // Import student routes
-const routes = require('./routes/studentRoutes');
+const routes = require('./routes/allRoutes');
 routes(app);
 
 // // Import admin routes

@@ -34,12 +34,25 @@ exports.createNewStudent = (req, res) => {
     });
 };
 
-// Query for deleting an entry from the students colleciton
-exports.deleteStudent = async (req, res) => {
-    await Student.deleteOne({ "_id": ObjectId(`req.params.id`) }, (err) => {
+// Query for updating student
+exports.updateStudent = (req, res) => {
+    let filter = { _id: req.params.id };
+    let update = req.body;
+    Student.findOneAndUpdate(filter, update, { new: true }, (err, student) => {
         if (err) {
             res.status(500).send(err);
         };
-        res.status(200).json({ message: "Student successfully deleted" })
+        console.log(`${student}`)
+        res.status(201).json(student);
+    });
+};
+
+// Query for deleting an entry from the students colleciton
+exports.deleteStudent = (req, res) => {
+    Student.deleteOne({ _id: req.params.id }, (err) => {
+        if (err) {
+            res.status(500).send(err);
+        };
+        res.status(200).json({ message: `Student successfully deleted` })
     });
 };
