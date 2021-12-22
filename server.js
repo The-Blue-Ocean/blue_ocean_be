@@ -11,12 +11,8 @@ const app = express();
 // Use middleware for json
 app.use(express.json());
 
-// Import student routes
+// Import routes
 const routes = require('./routes/allRoutes');
 routes(app);
-
-// // Import admin routes
-// const adminRoutes = require('./routes/adminRoutes');
-// adminRoutes(app);
 
 module.exports = app
