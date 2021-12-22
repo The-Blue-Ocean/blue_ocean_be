@@ -34,18 +34,21 @@ exports.createNewStudent = (req, res) => {
     });
 };
 
-// Query for adding a new entry into the students collection
+// Query for updating student
 exports.updateStudent = (req, res) => {
-    Student.findOneAndUpdate({ _id: req.params.id }, { Student: req.body }, { new: true }, (err, student) => {
+    let filter = { _id: req.params.id };
+    let update = req.body;
+    Student.findOneAndUpdate(filter, update, { new: true }, (err, student) => {
         if (err) {
             res.status(500).send(err);
         };
+        console.log(`${student}`)
         res.status(201).json(student);
     });
 };
 
 // Query for deleting an entry from the students colleciton
-exports.deleteStudent = async (req, res) => {
+exports.deleteStudent = (req, res) => {
     Student.deleteOne({ _id: req.params.id }, (err) => {
         if (err) {
             res.status(500).send(err);

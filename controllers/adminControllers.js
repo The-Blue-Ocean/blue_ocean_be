@@ -34,6 +34,18 @@ exports.createNewAdmin = (req, res) => {
     });
 };
 
+// Query for updating admin info
+exports.updateAdmin = (req, res) => {
+    let filter = { _id: req.params.id };
+    let update = req.body;
+    Admin.findOneAndUpdate(filter, update, { new: true }, (err, admin) => {
+        if (err) {
+            res.status(500).send(err);
+        };
+        res.status(201).json(admin);
+    });
+};
+
 // Query for deleting an entry from the admins colleciton
 exports.deleteAdmin = async (req, res) => {
     await Admin.deleteOne({ _id: req.params.id }, (err) => {
