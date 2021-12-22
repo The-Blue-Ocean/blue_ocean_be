@@ -5,19 +5,24 @@ const allRoutes = (app) => {
     const addStudent = require('../controllers/studentControllers');
     const deleteStudent = require('../controllers/studentControllers');
     const addAdmin = require('../controllers/adminControllers');
+    const updateStudent = require('../controllers/studentControllers');
 
     // ### Student routes ###
     // GET request for /students endpoint for all students
     app.route('/api/students').get(studentList.listAllStudents);
 
+    // GET request for /api/students/:id endpoint for a student by their id
+    app.route('/api/students/:id').get(studentList.listOneStudent);
+
     // Post request to add student
     app.route('/api/add-student').post(addStudent.createNewStudent)
+
+    // Patch request to update student
+    app.route('/api/update-student/:id').patch(updateStudent.updateStudent)
 
     // Delete students
     app.route('/api/del-student/:id').delete(deleteStudent.deleteStudent)
 
-    // GET request for /api/students/:id endpoint for a student by their id
-    app.route('/api/students/:id').get(studentList.listOneStudent);
 
 
     // ### Admin routes ###
