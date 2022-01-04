@@ -1,30 +1,20 @@
 // Require express and cors
 const express = require('express');
-const cors = require('cors');
+const cors = require('cors')
 
 // Import DB connection
-require('dotenv/config');
+require('dotenv').config()
 require('./db_config/db');
 
 // Create express app
 const app = express();
+app.use(cors())
 
-// Define port to run express app
-const port = process.env.PORT || 4000;
-
-// Use middleware for json and cors
+// Use middleware for json
 app.use(express.json());
-app.use(cors());
 
-// Import student routes
-const routes = require('./routes/studentRoutes');
+// Import routes
+const routes = require('./routes/allRoutes');
 routes(app);
 
-// // Import admin routes
-// const adminRoutes = require('./routes/adminRoutes');
-// adminRoutes(app);
-
-// Listen to the server
-app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
-});
+module.exports = app

@@ -8,7 +8,7 @@ const Schema = mongoose.Schema;
 const StudentSchema = new Schema({
     username: {
         type: String,
-        required: true
+        required: false
     },
 
     email: {
@@ -16,29 +16,24 @@ const StudentSchema = new Schema({
         required: true
     },
 
-    hash: {
+    name: {
         type: String,
         required: false
     },
 
-    name: {
-        type: String,
-        required: true
-    },
-
     rank: {
         type: String,
-        required: true
+        required: false
     },
 
     ets: {
         type: Date,
-        required: true
+        required: false
     },
 
     leave: {
         type: Boolean,
-        required: true
+        required: false
     },
 
     appointments: {

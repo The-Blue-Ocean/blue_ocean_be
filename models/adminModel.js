@@ -16,11 +16,6 @@ const AdminSchema = new Schema({
         required: true
     },
 
-    hash: {
-        type: String,
-        required: false
-    },
-
     name: {
         type: String,
         required: true
