@@ -13,12 +13,19 @@ const AdminSchema = new Schema({
 
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
 
     name: {
         type: String,
         required: true
+    },
+
+    isAdmin: {
+        type: Boolean,
+        require: true,
+        default: false
     }
 });
 
