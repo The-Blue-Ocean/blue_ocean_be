@@ -9,6 +9,8 @@ const allRoutes = (app) => {
     const deleteStudent = require('../controllers/studentControllers');
     const deleteAdmin = require('../controllers/adminControllers');
 
+    const listOneAdminEmail = require('../controllers/adminControllers');
+
     // ### Student routes ###
     // GET request for /students endpoint for all students
     app.route('/api/students').get(studentList.listAllStudents);
@@ -26,7 +28,6 @@ const allRoutes = (app) => {
     app.route('/api/del-student/:id').delete(deleteStudent.deleteStudent)
 
 
-
     // ### Admin routes ###
     // GET request for /api/admins endpoint for all admins
     app.route('/api/admins').get(adminList.listAllAdmins);
@@ -39,6 +40,9 @@ const allRoutes = (app) => {
 
     // GET request for /api/admins/:id endpoint for an admin by their id
     app.route('/api/admins/:id').get(adminList.listOneAdmin);
+
+    // Get admin by email
+    app.route('/api/adminEmail/:email').get(listOneAdminEmail.listOneAdminEmail);
 
     // Delete admin
     app.route('/api/del-admin/:id').delete(deleteAdmin.deleteAdmin)

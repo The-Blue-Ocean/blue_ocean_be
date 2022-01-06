@@ -1,4 +1,4 @@
-// Import students model
+// Import admin model
 const Admin = require('../models/adminModel');
 
 // DEFINE CONTROLLER FUNCTIONS
@@ -16,6 +16,16 @@ exports.listAllAdmins = (req, res) => {
 // Query for getting information for a particular admin
 exports.listOneAdmin = (req, res) => {
     Admin.find({ _id: req.params.id }, (err, admin) => {
+        if (err) {
+            res.status(500).send(err);
+        };
+        res.set('content-type', 'application/json').status(200).json(admin);
+    });
+};
+
+// Query for getting information for a particular admin
+exports.listOneAdminEmail = (req, res) => {
+    Admin.find({ email: req.params.email }, (err, admin) => {
         if (err) {
             res.status(500).send(err);
         };
