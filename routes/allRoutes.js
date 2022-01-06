@@ -28,7 +28,7 @@ const allRoutes = (app) => {
 
 
     // ### Admin routes ###
-    // GET request for /api/admins endpoint for all students
+    // GET request for /api/admins endpoint for all admins
     app.route('/api/admins').get(adminList.listAllAdmins);
 
     // Post request to add admin
