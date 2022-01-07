@@ -5,5 +5,7 @@ steps:
 # - name: node
 #   entrypoint: npm
 #   args: ['run', 'start']
+# - name: "gcr.io/cloud-builders/gcloud"
+#   args: ["app", "deploy"]
 - name: "gcr.io/cloud-builders/gcloud"
-  args: ["app", "deploy"]
+  args: ["app", "deploy","--ignore-file=cloudbuild.yaml"]
