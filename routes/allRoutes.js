@@ -1,3 +1,5 @@
+const { authRole } = require('../middleware/authorize')
+
 // Create app function
 const allRoutes = (app) => {
     const studentList = require('../controllers/studentControllers');
@@ -9,7 +11,7 @@ const allRoutes = (app) => {
     const deleteStudent = require('../controllers/studentControllers');
     const deleteAdmin = require('../controllers/adminControllers');
 
-    const listOneAdminEmail = require('../controllers/adminControllers');
+    const listOneAdmin = require('../controllers/adminControllers');
 
     // ### Student routes ###
     // GET request for /students endpoint for all students
@@ -39,10 +41,10 @@ const allRoutes = (app) => {
     app.route('/api/update-admin/:id').patch(updateAdmin.updateAdmin)
 
     // GET request for /api/admins/:id endpoint for an admin by their id
-    app.route('/api/admins/:id').get(adminList.listOneAdmin);
+    app.route('/api/admin').get(listOneAdmin.listOneAdmin);
 
     // Get admin by email
-    app.route('/api/adminEmail/:email').get(listOneAdminEmail.listOneAdminEmail);
+    // app.route('/api/adminEmail').get(listOneAdminEmail.listOneAdminEmail);
 
     // Delete admin
     app.route('/api/del-admin/:id').delete(deleteAdmin.deleteAdmin)
