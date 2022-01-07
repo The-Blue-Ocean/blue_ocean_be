@@ -40,18 +40,6 @@ exports.listOneAdmin = (req, res) => {
     });
 };
 
-// Query for getting information for a particular admin
-exports.checkAdmin = (req, res) => {
-    // console.log(req.headers.role)
-
-    Admin.find({ email: req.headers.role }, (err, admin) => {
-        if (err) {
-            res.status(500).send(err);
-        };
-        res.set('content-type', 'application/json').status(200).json(admin);
-    });
-};
-
 // Query for adding a new entry into the admins collection
 exports.createNewAdmin = (req, res) => {
     let newAdmin = new Admin(req.body);
