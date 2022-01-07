@@ -2,6 +2,8 @@ steps:
 - name: node
   entrypoint: npm
   args: ['install']
-- name: node
-  entrypoint: npm
-  args: ['run', 'start']
+# - name: node
+#   entrypoint: npm
+#   args: ['run', 'start']
+- name: "gcr.io/cloud-builders/gcloud"
+  args: ["app", "deploy"]
