@@ -1,5 +1,6 @@
 // Import admin model
 const Admin = require('../models/adminModel');
+const Student = require('../models/studentModel');
 
 // DEFINE CONTROLLER FUNCTIONS
 
@@ -14,30 +15,41 @@ exports.listAllAdmins = (req, res) => {
 };
 
 // Query for getting information for a particular admin
-exports.listOneAdmin = (req, res) => {
-    Admin.find({ email: req.headers.role }, (err, admin) => {
+exports.listAdminInfo = (req, res) => {
+    Student.findOne({ email: req.headers.role }, (err, student) => {
         if (err) {
             res.status(500).send(err);
         };
 
-        try {
-            const authorization = admin[0].isAdmin
+        if (student) {
+            res.set('content-type', 'application/json').status(200).json(student);
+        } else {
+            Admin.find({ email: req.headers.role }, (err, admin) => {
+                if (err) {
+                    res.status(500).send(err);
+                };
 
-            if (authorization) {
-                Admin.find({}, (err, admin) => {
-                    if (err) {
-                        res.status(500).send(err);
+                try {
+                    const authorization = admin[0].isAdmin
+
+                    if (authorization) {
+                        Student.find({}, (err, student) => {
+                            if (err) {
+                                res.status(500).send(err);
+                            };
+                            res.set('content-type', 'application/json').status(200).json(student);
+                        });
+                    } else {
+                        return res.set('content-type', 'application/json').status(200).json(admin);
                     }
-                    return res.set('content-type', 'application/json').status(200).json(admin);
-                });
-            } else {
-                return res.set('content-type', 'application/json').status(200).json(admin);
-            }
 
-        } catch (error) {
-            return res.json({ message: 'You need to login!' })
+                } catch (error) {
+                    return res.json({ message: 'You need to login!' })
+                }
+            });
         }
     });
+
 };
 
 // Query for adding a new entry into the admins collection

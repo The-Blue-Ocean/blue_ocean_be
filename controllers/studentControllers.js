@@ -1,5 +1,6 @@
 // Import students model
 const Student = require('../models/studentModel');
+const Admin = require('../models/adminModel');
 
 // DEFINE CONTROLLER FUNCTIONS
 
@@ -15,7 +16,7 @@ exports.listAllStudents = (req, res) => {
 
 // Query for getting information for a particular student
 exports.listOneStudent = (req, res) => {
-    Student.find({ _id: req.params.id }, (err, student) => {
+    Student.findOne({ email: req.headers.role }, (err, student) => {
         if (err) {
             res.status(500).send(err);
         };
