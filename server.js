@@ -22,6 +22,7 @@ app.use(express.json());
 
 // Import routes
 const routes = require('./routes/allRoutes');
+
 routes(app);
 
 module.exports = app

@@ -55,6 +55,12 @@ const StudentSchema = new Schema({
     cohort: {
         type: String,
         required: true
+    },
+
+    isAdmin: {
+        type: Boolean,
+        require: true,
+        default: false
     }
 });
 
