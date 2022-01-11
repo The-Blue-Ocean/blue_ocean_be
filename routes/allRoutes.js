@@ -14,7 +14,7 @@ const allRoutes = (app) => {
     app.route('/api/students').get(studentList.listAllStudents);
 
     // GET request for /api/students/:id endpoint for a student by their id
-    app.route('/api/students/:id').get(studentList.listOneStudent);
+    app.route('/api/student').get(studentList.listOneStudent);
 
     // Post request to add student
     app.route('/api/add-student').post(addStudent.createNewStudent)
@@ -24,7 +24,6 @@ const allRoutes = (app) => {
 
     // Delete students
     app.route('/api/del-student/:id').delete(deleteStudent.deleteStudent)
-
 
 
     // ### Admin routes ###
@@ -37,8 +36,11 @@ const allRoutes = (app) => {
     // Patch request to update admin
     app.route('/api/update-admin/:id').patch(updateAdmin.updateAdmin)
 
-    // GET request for /api/admins/:id endpoint for an admin by their id
-    app.route('/api/admins/:id').get(adminList.listOneAdmin);
+    // GET request for all admin if admin acount or specific admin
+    app.route('/api/admin').get(adminList.listAdminInfo);
+
+    // Get admin by email
+    // app.route('/api/adminEmail').get(listOneAdminEmail.listOneAdminEmail);
 
     // Delete admin
     app.route('/api/del-admin/:id').delete(deleteAdmin.deleteAdmin)
