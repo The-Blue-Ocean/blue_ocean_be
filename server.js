@@ -2,11 +2,12 @@
 const express = require('express');
 const cors = require('cors')
 
+// require dotenv
+require('dotenv').config()
 // Require decoder
 const decoderFirebase = require('./middleware')
 
 // Import DB connection
-require('dotenv').config()
 require('./db_config/db');
 
 
