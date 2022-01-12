@@ -14,7 +14,7 @@ class DecoderFirebase {
             }
             return res.json({ message: 'Unauthorized!' })
         } catch (e) {
-            return res.json({ message: 'Internal Error!' })
+            return res.json({ message: `Internal Error! -> ${e}` })
         }
     }
 }
