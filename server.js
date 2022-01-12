@@ -5,7 +5,7 @@ const cors = require('cors')
 // require dotenv
 require('dotenv').config()
 // Require decoder
-// const decoderFirebase = require('./middleware')
+const decoderFirebase = require('./middleware')
 
 // Import DB connection
 require('./db_config/db');
@@ -16,7 +16,7 @@ const app = express();
 app.use(cors())
 
 // Check Token middleware
-// app.use(decoderFirebase.decodeToken)
+app.use(decoderFirebase.decodeToken)
 
 // Use middleware for json
 app.use(express.json());
