@@ -2,7 +2,7 @@
 
 ## Description 
 
-REST API that provides the data to the frontend. Utilized MongoDB to store user data. Used Firebase to store user and admin authentication and authorization login data.
+REST API that provides the data to the frontend. Utilized MongoDB to store user data. Used Firebase to store user and admin authentication and authorization login data. For deployment, we used App Engine from Google Cloud Platform to host and deploy our server.
 
 ## Technology Used
 
